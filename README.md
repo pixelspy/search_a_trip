@@ -4,5 +4,9 @@
 
 ### Technical Stack
 * Axios
-* Reactjs
+* React.js
 * Sass/Scss
+
+### Project Init
+* git clone
+* npm install
