@@ -11,10 +11,11 @@ class App extends Component {
     query: '',
     results: [],
     queryDest: '',
-    resultsDest: []
+    resultsDest: [],
+    enabledList: false
   };
 
-  getCities() {
+  getPopularCities() {
     axios
       .get("http://www-uat.tictactrip.eu/api/cities/popular/5")
       // .then(response => console.log(response))
@@ -34,11 +35,14 @@ class App extends Component {
     axios.get(`http://www-uat.tictactrip.eu/api/cities/autocomplete/?q=${this.state.query}`)
     // .then(response => console.log(response))
     .then(({data}) => {
+      // let fiveFirst = data;
+      // console.log('data = ', fiveFirst);
       this.setState({
-        results: data
+        results: data.slice(0, 6)
       })
     })
   };
+
   getQueryDestination() {
     axios.get(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.queryDest}/5`)
     // .then(response => console.log(response))
@@ -47,8 +51,23 @@ class App extends Component {
         resultsDest: data
       })
     })
-    console.log(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.queryDest}/5`)
+    // console.log(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.queryDest}/5`)
   };
+
+  handleClick = (e) => {
+    e.preventDefault();
+    this.setState({enabledList: true});
+    // console.log('clicked')
+    this.getPopularCities();
+    };
+  //
+  // handleClickBtn = (e) => {
+  //   if (this.refs.inputDestBtn !== null) {
+  //     var input = this.refs.inputDestBtn;
+  //     var inputValue = input.value;
+  //     console.log("input is = ", inputValue);
+  //   }
+  // }
 
   handleInputChange = () => {
       this.setState({
@@ -74,9 +93,9 @@ class App extends Component {
       })
     };
 
-  componentDidMount() {
-    this.getCities();
-  };
+  // componentDidMount() {
+  //   this.getCities();
+  // };
 
   render() {
 
@@ -100,43 +119,98 @@ class App extends Component {
             <h1 className="home_title">European trains and buses at your fingertips.</h1>
             <h2 className="home_subtitle">Travel with Trainline, the independent leader in train and bus ticket sales throughout Europe.</h2>
           <div className="search_content">
-            <div className="search_form">
-              <div>Where can we take you?</div>
+
+
+            <div className="search_form_left">
+              <div className="form_title">Where can we take you?</div>
               <form>
-               <input
-                 placeholder="Search for..."
-                 ref={input => this.search = input}
-                 onChange={this.handleInputChange}
-               />
+                <div className="search_section_container">
+                    <input
+                      className="input_field input_in"
+                      placeholder="Enter your departure station..."
+                      ref={input => this.search = input}
+                      onChange={this.handleInputChange}
+                      onClick={(e) => this.handleClick(e)}
+                    />
+                    <input
+                      className="input_field input_out"
+                      placeholder="Enter your arrival station"
+                      ref={input => this.searchDest = input}
+                      onChange={this.handleInputChangeDestination}
+                      type="text"
+                      ref="inputDestBtn"
+                    />
+
+                </div>
+                <div className="search_section_container">
+                    <input
+                      className="input_field input_depart_in"
+                      placeholder="Depart"
+                    />
+                    <input
+                      className="input_field input_depart_out"
+                      placeholder="Return"
+                    />
+                </div>
+                <div className="search_section_container">
+                  <input
+                    className="input_field_travellers"
+                    placeholder="1 Adult (26-59)"
+                  />
+                </div>
+                <div className="search_btn_content">
+                  <a href="" className="lien"><p>Use a discount code</p></a>
+                  <button className="btn_search">Search</button>
+                </div>
              </form>
-             {/* <Suggestions results={this.state.results} /> */}
+            </div>
+            <div className="search_form_right">
+              <div>
+
+                <div>
+                  <div className="form_title">Select a departure station</div>
+                  { this.state.query ?
+                    <ul className="search_list">
+                      <Suggestions
+                        results={this.state.results}
+                        onClick={this.handleClickBtn}
+                      />
+                    </ul>
+                    : <div>
+                      {this.state.enabledList &&
+                        <ul className="search_list">
+                        {cities.map(city => {
+                          const { local_name } = city;
+                          return (
+                              <li className="search_list_item" key={local_name} onClick={this.handleClickBtn}>
+                                <img
+                                  className="search_item_icone"
+                                  src="https://assets.trainline.eu/assets/images/location-5632039ea0e607c803bc503fba864f35.svg"
+                                  alt="logo"/>
+                                {local_name}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      }
+                    </div>
+                  }
+                </div>
+{/*
+              when query is inserted , then top5 destinations suggesions should appear
+
+                <div>
+                  <h2>Popular Destinations</h2>
+                  <Suggestions results={this.state.resultsDest} />
+                </div> */}
+
+
+                <button className="search_list_btn search_item_icon">VIA</button>
+
+              </div>
             </div>
           </div>
-
-          </div>
-
-          {/* <div>
-            <h2>Top 5 Cities</h2>
-            {cities.map(city => {
-              const { local_name } = city;
-              return (
-                <div key={local_name}>{local_name}</div>
-              );
-            })}
-          </div>
-          <div>
-            <h2>Popular Destinations</h2>
-            <form>
-              <input
-                placeholder="Go to ..."
-                ref={input => this.searchDest = input}
-                onChange={this.handleInputChangeDestination}
-              />
-              {/* <p>{this.state.queryDest}</p> */}
-            {/* </form>
-            <Suggestions results={this.state.resultsDest} />
-          </div>  */}
-
+        </div>
         </div>
       </div>
     );

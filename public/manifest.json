@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Search, compare, and buy cheap train and bus tickets with Trainline",
+  "name": "Trainline",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "tl.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
