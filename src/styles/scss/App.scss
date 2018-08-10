@@ -23,7 +23,7 @@ text-decoration:none;
 
 .cover_image {
   background-image: url("../../img/bg_img.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 900px;
   opacity: 1.5;
@@ -32,7 +32,7 @@ text-decoration:none;
   background-color: $primary-color;
 }
 .header {
-  background-color: $primary-color;
+  // background-color: $primary-color;
   height: 60px;
   color: $font-color-light;
   font-size: 15px;
@@ -112,6 +112,12 @@ text-decoration:none;
   text-shadow: 0 0 1px $shadow-color, 0 1px 1px $shadow-color;
   text-align: center;
 }
+span.mobileText {
+  display: none;
+}
+span.mobileTextLink {
+  display: none;
+}
 
 .search_content {
   margin-top: 34px;
@@ -130,7 +136,7 @@ text-decoration:none;
   padding: 24px 40px;
   background-color: $font-color-light;
   border-radius: .3125em;
-  min-height: 460px;
+  min-height: 400px;
   flex-direction: column;
 }
 
@@ -203,6 +209,7 @@ text-decoration:none;
   width: 90%;
   line-height: 20px;
 }
+
 .input_travellers_icon {
   background-image: url(../../img/noun_User.png);
   background-repeat: no-repeat;
@@ -259,4 +266,61 @@ text-decoration:none;
   background-position: 11px center;
   background-size: 16px;
   padding-left: 35px;
+}
+
+div.mobileBadges{
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  div.app_header {
+    background-color: transparent;
+  }
+  div.header {
+    display: flex;
+  }
+  .header_account {
+    display: none;
+  }
+  .header_text {
+    display: none;
+  }
+  .header_logo {
+    margin: 27%;
+  }
+
+  .cover_image {
+    background-size: 100%;
+  }
+  .search_content {
+    display: none;
+  }
+  .home_title {
+    margin-top: 300px;
+    color: $primary-color;
+    font-size: 1.6em;
+    text-shadow: none;
+  }
+  .home_subtitle{
+    display: none;
+  }
+  span.mobileText {
+    color: $primary-color;
+    font-size: 1.3em;
+    text-shadow: none;
+    display: block;
+    text-align: center;
+  }
+  div.mobileBadges{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  span.mobileTextLink {
+    color: $ternary-color;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
 }
