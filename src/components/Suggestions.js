@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Suggestions = (props) => {
+const Suggestions = (props, handleClickBtn) => {
   const options = props.results.map(r => (
-    <li className="search_list_item" key={r.id} onClick>
+    <li
+      className="search_list_item"
+      key={r.id}
+      onClick={() => props.handleClickBtn(r.local_name, r.unique_name, props.departure)}
+      >
       <img
         className="search_item_icone"
         src="https://assets.trainline.eu/assets/images/location-5632039ea0e607c803bc503fba864f35.svg"

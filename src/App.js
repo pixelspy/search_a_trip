@@ -10,10 +10,13 @@ class App extends Component {
     cities: [],
     query: '',
     results: [],
-    queryDest: '',
-    resultsDest: [],
-    enabledList: false
+    queryArrival: '',
+    resultsArrival: [],
+    enabledList: false,               // for list of Popular Destination
+    uniqueName: '',                   // for Get Query Arrival Suggestions
+    titleChanged: false               // for Title on Right Panel List
   };
+
 
   getPopularCities() {
     axios
@@ -43,31 +46,43 @@ class App extends Component {
     })
   };
 
-  getQueryDestination() {
-    axios.get(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.queryDest}/5`)
+  getQueryArrival() {
+    axios.get(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.uniqueName}/5`)
     // .then(response => console.log(response))
     .then(({data}) => {
       this.setState({
-        resultsDest: data
+        resultsArrival: data
       })
     })
-    // console.log(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.queryDest}/5`)
+    // console.log(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.queryArrival}/5`)
   };
 
+
+  // List of popular cities On Click
   handleClick = (e) => {
     e.preventDefault();
     this.setState({enabledList: true});
     // console.log('clicked')
     this.getPopularCities();
     };
-  //
-  // handleClickBtn = (e) => {
-  //   if (this.refs.inputDestBtn !== null) {
-  //     var input = this.refs.inputDestBtn;
-  //     var inputValue = input.value;
-  //     console.log("input is = ", inputValue);
-  //   }
-  // }
+
+
+
+  handleClickBtn = (name, uniqueName, isDeparture) => {
+    // isDeparture = props.departure (in Suggestions Child )
+      if(isDeparture === true ) {
+        this.search.value = name;  // ref of input
+        this.setState({
+          uniqueName}, () => {
+            this.getQueryArrival();
+          });
+        this.searchDest.focus();
+        this.setState({results: []});
+        this.setState({titleChanged: true})
+      } else {
+        this.searchDest.value = name;
+      }
+  };
 
   handleInputChange = () => {
       this.setState({
@@ -79,15 +94,15 @@ class App extends Component {
           }
         }
       })
-    }
+    };
 
   handleInputChangeDestination = () => {
       this.setState({
-        queryDest: this.searchDest.value
+        queryArrival: this.searchDest.value
       }, () => {
-        if (this.state.queryDest && this.state.queryDest.length > 1) {
-          if (this.state.queryDest.length % 2 === 1) {
-            this.getQueryDestination()
+        if (this.state.queryArrival && this.state.queryArrival.length > 1) {
+          if (this.state.queryArrival.length % 2 === 1) {
+            this.getQueryArrival()
           }
         }
       })
@@ -100,6 +115,7 @@ class App extends Component {
   render() {
 
     const { cities } = this.state;
+
     return (
       <div className="app">
         <div className="cover_image">
@@ -131,15 +147,17 @@ class App extends Component {
                       ref={input => this.search = input}
                       onChange={this.handleInputChange}
                       onClick={(e) => this.handleClick(e)}
+
                     />
                     <input
                       className="input_field input_out"
                       placeholder="Enter your arrival station"
                       ref={input => this.searchDest = input}
                       onChange={this.handleInputChangeDestination}
-                      type="text"
-                      ref="inputDestBtn"
+                      // onClick={(uniqueName) => this.handleClickArr(uniqueName)}
+
                     />
+
 
                 </div>
                 <div className="search_section_container">
@@ -154,7 +172,7 @@ class App extends Component {
                 </div>
                 <div className="search_section_container">
                   <input
-                    className="input_field_travellers"
+                    className="input_field_travellers input_travellers_icon"
                     placeholder="1 Adult (26-59)"
                   />
                 </div>
@@ -168,12 +186,18 @@ class App extends Component {
               <div>
 
                 <div>
-                  <div className="form_title">Select a departure station</div>
+                  <div className="form_title">
+                    {
+                      this.state.titleChanged ? 'Select a Popular Destination' : 'Select a departure station'
+                    }
+
+                  </div>
                   { this.state.query ?
                     <ul className="search_list">
                       <Suggestions
+                        departure={true}
                         results={this.state.results}
-                        onClick={this.handleClickBtn}
+                        handleClickBtn={this.handleClickBtn}
                       />
                     </ul>
                     : <div>
@@ -182,7 +206,7 @@ class App extends Component {
                         {cities.map(city => {
                           const { local_name } = city;
                           return (
-                              <li className="search_list_item" key={local_name} onClick={this.handleClickBtn}>
+                              <li className="search_list_item" key={local_name}>
                                 <img
                                   className="search_item_icone"
                                   src="https://assets.trainline.eu/assets/images/location-5632039ea0e607c803bc503fba864f35.svg"
@@ -196,13 +220,16 @@ class App extends Component {
                     </div>
                   }
                 </div>
-{/*
-              when query is inserted , then top5 destinations suggesions should appear
+
+              {/* when query is inserted and i handleclick input arrival ==> then top5 destinations suggesions should appear */}
 
                 <div>
-                  <h2>Popular Destinations</h2>
-                  <Suggestions results={this.state.resultsDest} />
-                </div> */}
+                  <Suggestions
+                    departure={false}
+                    results={this.state.resultsArrival}
+                    handleClickBtn={this.handleClickBtn}
+                  />
+                </div>
 
 
                 <button className="search_list_btn search_item_icon">VIA</button>

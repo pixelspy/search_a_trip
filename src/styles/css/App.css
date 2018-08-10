@@ -187,6 +187,13 @@ a:link {
   width: 90%;
   line-height: 20px; }
 
+.input_travellers_icon {
+  background-image: url(../../img/noun_User.png);
+  background-repeat: no-repeat;
+  background-position: 11px center;
+  background-size: 16px;
+  padding-left: 35px; }
+
 .search_btn_content {
   display: flex;
   justify-content: space-between;
