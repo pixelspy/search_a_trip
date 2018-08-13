@@ -6,6 +6,7 @@
   },
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "js-data": "^3.0.2",
     "js-data-http": "^3.0.0",
     "react": "^16.4.2",
@@ -17,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "sass:watch" : "sass --watch src/styles/scss:src/styles/css",
+    "sass:watch": "sass --watch src/styles/scss:src/styles/css",
     "sass:build": "sass --update src/styles/scss:src/styles/css"
   },
   "devDependencies": {
