@@ -5,8 +5,12 @@ const Suggestions = (props, handleClickBtn) => {
     <li
       className="searchListItem"
       key={r.id}
-      onClick={() => props.handleClickBtn(r.local_name, r.unique_name, props.departure, props.topDeparture)}
-      >
+      onClick={() => props.handleClickBtn(
+        r.local_name,
+        r.unique_name,
+        props.departure,
+        props.topDeparture
+      )}>
       <img
         className="searchItemIcone"
         src="https://assets.trainline.eu/assets/images/location-5632039ea0e607c803bc503fba864f35.svg"

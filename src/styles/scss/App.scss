@@ -20,7 +20,6 @@ text-decoration:none;
   input, button, submit { border:none; };
   height: 100%;
 }
-
 .coverImage {
   background-image: url("../../img/bg_img.jpg");
   background-size: cover;
@@ -44,7 +43,6 @@ text-decoration:none;
   align-items: center;
   justify-content: space-between;
 }
-
 .headerLogo {
   width: 100px;
   display: block;
@@ -52,7 +50,6 @@ text-decoration:none;
   white-space: nowrap;
   cursor: pointer;
 }
-
 .btnHeader {
   width: auto;
   color: $font-color-light;
@@ -82,7 +79,22 @@ text-decoration:none;
   letter-spacing: .025em;
   text-transform: uppercase;
 }
-
+.btnHeaderFlag {
+  border: 2px solid #C0C9CC !important;
+  border-radius: 5px;
+}
+.btnHeaderEur {
+  border: 2px solid #C0C9CC !important;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 30px;
+  min-height: 24px;
+  padding: 1px;
+  background: 0 0;
+  margin-left: 15px;
+}
 .headerAccount {
   float: right;
   margin-left: -50%;
@@ -90,7 +102,6 @@ text-decoration:none;
   display: flex;
   align-items: center;
 }
-
 .headerText {
   letter-spacing: .025em;
   text-transform: uppercase;
@@ -99,18 +110,20 @@ text-decoration:none;
   font-weight: 700;
   margin-right: 30px;
 }
-
 .homeTitle {
-  font-size: 44px;
+  font-size: 40px;
   color: $font-color-light;
   text-shadow: 0 1px 4px $shadow-color;
   text-align: center;
+  margin: 1em 0 0;
 }
 .homeSubtitle{
   font-weight: 400;
+  font-size: 21px;
   color: $font-color-light;
   text-shadow: 0 0 1px $shadow-color, 0 1px 1px $shadow-color;
   text-align: center;
+  margin: .3em 0;
 }
 span.mobileText {
   display: none;
@@ -118,7 +131,6 @@ span.mobileText {
 span.mobileTextLink {
   display: none;
 }
-
 .searchContent {
   margin-top: 34px;
   margin-bottom: 50px;
@@ -139,7 +151,6 @@ span.mobileTextLink {
   min-height: 400px;
   flex-direction: column;
 }
-
 .searchFormRight {
   float: left;
   display: block;
@@ -149,18 +160,15 @@ span.mobileTextLink {
   background-color: $font-color-light;
   border-radius: .3125em;
 }
-
 .formTitle {
   font-size: 20px;
   font-weight: 400;
   margin: 0 0 15px;
 }
-
 .searchSectionContainer {
   background-color: #F6F7FA;
   margin-bottom: 29px;
 }
-
 .inputField {
   padding: 11px 0 11px 35px;
   width: 90%;
@@ -171,7 +179,6 @@ span.mobileTextLink {
   border-radius: .3125em;
   opacity: .5;
 }
-
 .inputIn {
   background-image: url(../../img/noun_in.png);
   background-repeat: no-repeat;
@@ -186,7 +193,6 @@ span.mobileTextLink {
   background-size: 16px;
   padding-left: 35px;
 }
-
 .inputDepartIn {
   background-image: url(../../img/noun_Nex.png);
   background-repeat: no-repeat;
@@ -201,7 +207,6 @@ span.mobileTextLink {
   background-size: 16px;
   padding-left: 35px;
 }
-
 .inputFieldTravellers {
   border: solid 1px #d1d2d6 !important;
   border-radius: .3125em;
@@ -209,7 +214,6 @@ span.mobileTextLink {
   width: 90%;
   line-height: 20px;
 }
-
 .inputTravellersIcon {
   background-image: url(../../img/noun_User.png);
   background-repeat: no-repeat;
@@ -217,18 +221,15 @@ span.mobileTextLink {
   background-size: 16px;
   padding-left: 35px;
 }
-
 .searchBtnContent {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .lien {
   color: $secondary-color;
   font-size: .87em;
 }
-
 .searchList {
     border-radius: .3125em;
     border: 1px solid $light-color;
@@ -236,19 +237,16 @@ span.mobileTextLink {
     margin: 0;
     padding: 0;
 }
-
 .searchListItem {
   border-bottom: 1px solid $light-color;
   color: #323E42;
   padding: 12px 0 11px 7px;
   text-align: left;
   cursor: pointer;
-
 }
 .searchItemIcone {
   padding-right: 7px;
 }
-
 .searchListBtn{
   background-color: #D3F9F4;
   color: $secondary-color;
@@ -267,11 +265,9 @@ span.mobileTextLink {
   background-size: 16px;
   padding-left: 35px;
 }
-
 div.mobileBadges{
   display: none;
 }
-
 @media screen and (max-width: 600px) {
   div.appHeader {
     background-color: transparent;
@@ -288,7 +284,6 @@ div.mobileBadges{
   .headerLogo {
     margin: 27%;
   }
-
   .coverImage {
     background-size: 100%;
   }

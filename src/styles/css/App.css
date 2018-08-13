@@ -77,6 +77,22 @@ a:link {
   letter-spacing: .025em;
   text-transform: uppercase; }
 
+.btnHeaderFlag {
+  border: 2px solid #C0C9CC !important;
+  border-radius: 5px; }
+
+.btnHeaderEur {
+  border: 2px solid #C0C9CC !important;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 30px;
+  min-height: 24px;
+  padding: 1px;
+  background: 0 0;
+  margin-left: 15px; }
+
 .headerAccount {
   float: right;
   margin-left: -50%;
@@ -93,16 +109,19 @@ a:link {
   margin-right: 30px; }
 
 .homeTitle {
-  font-size: 44px;
+  font-size: 40px;
   color: #FFF;
   text-shadow: 0 1px 4px rgba(48, 50, 58, 0.6);
-  text-align: center; }
+  text-align: center;
+  margin: 1em 0 0; }
 
 .homeSubtitle {
   font-weight: 400;
+  font-size: 21px;
   color: #FFF;
   text-shadow: 0 0 1px rgba(48, 50, 58, 0.6), 0 1px 1px rgba(48, 50, 58, 0.6);
-  text-align: center; }
+  text-align: center;
+  margin: .3em 0; }
 
 span.mobileText {
   display: none; }

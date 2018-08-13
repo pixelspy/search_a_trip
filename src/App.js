@@ -80,17 +80,14 @@ class App extends Component {
     e.preventDefault();
     this.setState(prevState => ({
       enableClick2: !prevState.enableClick2}));
-    // console.log('2nd input clicked')
   }
   handleClickDepart = (e) => {
     e.preventDefault();
     this.setState({enableClick3: true});
-    console.log('3rd input clicked')
   }
   handleClickReturn = (e) => {
     e.preventDefault();
     this.setState({enableClick4: true});
-    console.log('4th input clicked')
   }
 
   handleClickBtn = (name, uniqueName, isDeparture, isTopDeparture) => {
@@ -179,6 +176,10 @@ class App extends Component {
                   <Button text="SIGN IN" />
                   <p className="headerText">UK RAIL</p>
                   <p className="headerText">help</p>
+                  <img className="btnHeaderFlag"
+                    src="https://assets.trainline.eu/assets/images/country-flags/gb-a5425dc0fb6c2c8fd919d07e4ea727f5.svg"
+                    alt="UK flag"/>
+                  <button className="btnHeaderEur">EUR</button>
                 </div>
             </div>
           </div>
