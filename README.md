@@ -1,4 +1,8 @@
 # Project Test
+
+![](img1.png)
+![](img2.png)
+
 ## Front copying from [TrainLine](https://www.trainline.eu/)
 ## Back Api from  Tictactrip
 * http://www-uat.tictactrip.eu/api/cities/autocomplete/?q=P
@@ -13,6 +17,11 @@
 ### Project Init
 * git clone
 * npm install
+
+
+### Site déployé sur Heroku
+[Lien du site](https://secret-chamber-39747.herokuapp.com/)
+
 
 # À améliorer :
 * Refactoring des composants enfants / parents (reactJS)
