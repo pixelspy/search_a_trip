@@ -1,7 +1,6 @@
 # Project Test
 
-![](img1.png)
-![](img2.png)
+![Version Desktop](img1.png)
 
 ## Front copying from [TrainLine](https://www.trainline.eu/)
 ## Back Api from  Tictactrip
@@ -22,6 +21,7 @@
 ### Site déployé sur Heroku
 [Lien du site](https://secret-chamber-39747.herokuapp.com/)
 
+![Responsive - Version Mobile](img2.png)
 
 # À améliorer :
 * Refactoring des composants enfants / parents (reactJS)
