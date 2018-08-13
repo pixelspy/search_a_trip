@@ -6,6 +6,8 @@
   },
   "private": true,
   "dependencies": {
+    "js-data": "^3.0.2",
+    "js-data-http": "^3.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
