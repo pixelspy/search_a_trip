@@ -20,14 +20,14 @@ a:link {
   .app input, .app button, .app submit {
     border: none; }
 
-.cover_image {
+.coverImage {
   background-image: url("../../img/bg_img.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 900px;
   opacity: 1.5; }
 
-.app_header {
+.appHeader {
   background-color: #3d4f6a; }
 
 .header {
@@ -42,14 +42,14 @@ a:link {
   align-items: center;
   justify-content: space-between; }
 
-.header_logo {
+.headerLogo {
   width: 100px;
   display: block;
   float: left;
   white-space: nowrap;
   cursor: pointer; }
 
-.btn_header {
+.btnHeader {
   width: auto;
   color: #FFF;
   background-color: #01C3A7;
@@ -63,7 +63,7 @@ a:link {
   font-weight: 600;
   display: inline-block; }
 
-.btn_search {
+.btnSearch {
   color: #FFF;
   background-color: #01C3A7;
   cursor: pointer;
@@ -78,14 +78,14 @@ a:link {
   letter-spacing: .025em;
   text-transform: uppercase; }
 
-.header_account {
+.headerAccount {
   float: right;
   margin-left: -50%;
   height: 60px;
   display: flex;
   align-items: center; }
 
-.header_text {
+.headerText {
   letter-spacing: .025em;
   text-transform: uppercase;
   text-align: center;
@@ -93,13 +93,13 @@ a:link {
   font-weight: 700;
   margin-right: 30px; }
 
-.home_title {
+.homeTitle {
   font-size: 44px;
   color: #FFF;
   text-shadow: 0 1px 4px rgba(48, 50, 58, 0.6);
   text-align: center; }
 
-.home_subtitle {
+.homeSubtitle {
   font-weight: 400;
   color: #FFF;
   text-shadow: 0 0 1px rgba(48, 50, 58, 0.6), 0 1px 1px rgba(48, 50, 58, 0.6);
@@ -111,7 +111,7 @@ span.mobileText {
 span.mobileTextLink {
   display: none; }
 
-.search_content {
+.searchContent {
   margin-top: 34px;
   margin-bottom: 50px;
   display: flex;
@@ -120,7 +120,7 @@ span.mobileTextLink {
   margin-left: auto;
   margin-right: auto; }
 
-.search_form_left {
+.searchFormLeft {
   float: left;
   display: flex;
   margin-right: 2.35765%;
@@ -131,7 +131,7 @@ span.mobileTextLink {
   min-height: 400px;
   flex-direction: column; }
 
-.search_form_right {
+.searchFormRight {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -140,16 +140,16 @@ span.mobileTextLink {
   background-color: #FFF;
   border-radius: .3125em; }
 
-.form_title {
+.formTitle {
   font-size: 20px;
   font-weight: 400;
   margin: 0 0 15px; }
 
-.search_section_container {
+.searchSectionContainer {
   background-color: #F6F7FA;
   margin-bottom: 29px; }
 
-.input_field {
+.inputField {
   padding: 11px 0 11px 35px;
   width: 90%;
   line-height: 20px;
@@ -158,49 +158,49 @@ span.mobileTextLink {
   border-radius: .3125em;
   opacity: .5; }
 
-.input_in {
+.inputIn {
   background-image: url(../../img/noun_in.png);
   background-repeat: no-repeat;
   background-position: 11px center;
   background-size: 16px;
   padding-left: 35px; }
 
-.input_out {
+.inputOut {
   background-image: url(../../img/noun_out.png);
   background-repeat: no-repeat;
   background-position: 11px center;
   background-size: 16px;
   padding-left: 35px; }
 
-.input_depart_in {
+.inputDepartIn {
   background-image: url(../../img/noun_Nex.png);
   background-repeat: no-repeat;
   background-position: 11px center;
   background-size: 16px;
   padding-left: 35px; }
 
-.input_depart_out {
+.inputDepartOut {
   background-image: url(../../img/noun_Prev.png);
   background-repeat: no-repeat;
   background-position: 11px center;
   background-size: 16px;
   padding-left: 35px; }
 
-.input_field_travellers {
+.inputFieldTravellers {
   border: solid 1px #d1d2d6 !important;
   border-radius: .3125em;
   padding: 11px 0 11px 35px;
   width: 90%;
   line-height: 20px; }
 
-.input_travellers_icon {
+.inputTravellersIcon {
   background-image: url(../../img/noun_User.png);
   background-repeat: no-repeat;
   background-position: 11px center;
   background-size: 16px;
   padding-left: 35px; }
 
-.search_btn_content {
+.searchBtnContent {
   display: flex;
   justify-content: space-between;
   align-items: center; }
@@ -209,24 +209,24 @@ span.mobileTextLink {
   color: #01C3A7;
   font-size: .87em; }
 
-.search_list {
+.searchList {
   border-radius: .3125em;
   border: 1px solid #DCE3E6;
   list-style-type: none;
   margin: 0;
   padding: 0; }
 
-.search_list_item {
+.searchListItem {
   border-bottom: 1px solid #DCE3E6;
   color: #323E42;
   padding: 12px 0 11px 7px;
   text-align: left;
   cursor: pointer; }
 
-.search_item_icone {
+.searchItemIcone {
   padding-right: 7px; }
 
-.search_list_btn {
+.searchListBtn {
   background-color: #D3F9F4;
   color: #01C3A7;
   border: 1px solid #01907c !important;
@@ -237,7 +237,7 @@ span.mobileTextLink {
   cursor: pointer;
   border-radius: .3125em; }
 
-.search_item_icon {
+.searchItemIcon {
   background-image: url(https://assets.trainline.eu/assets/images/add-via-ff2137e0ba72cb639915b58caca6f280.svg);
   background-repeat: no-repeat;
   background-position: 11px center;
@@ -248,34 +248,34 @@ div.mobileBadges {
   display: none; }
 
 @media screen and (max-width: 600px) {
-  div.app_header {
+  div.appHeader {
     background-color: transparent; }
 
   div.header {
     display: flex; }
 
-  .header_account {
+  .headerAccount {
     display: none; }
 
-  .header_text {
+  .headerText {
     display: none; }
 
-  .header_logo {
+  .headerLogo {
     margin: 27%; }
 
-  .cover_image {
+  .coverImage {
     background-size: 100%; }
 
-  .search_content {
+  .searchContent {
     display: none; }
 
-  .home_title {
+  .homeTitle {
     margin-top: 300px;
     color: #3d4f6a;
     font-size: 1.6em;
     text-shadow: none; }
 
-  .home_subtitle {
+  .homeSubtitle {
     display: none; }
 
   span.mobileText {

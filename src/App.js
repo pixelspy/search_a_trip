@@ -5,6 +5,7 @@ import Button from './components/button';
 
 import logo from './img/TL_Logo_White.png';
 
+// TRIANGLE ANIM
 class App extends Component {
   state = {
     cities: [],
@@ -60,10 +61,22 @@ class App extends Component {
   handleClick = (e, local_name) => {
     e.preventDefault();
     this.setState({enabledList: true});
-    // console.log('clicked')
+    console.log('1st input clicked')
     this.getPopularCities();
     };
 
+  handleClickOut = (e) => {
+    e.preventDefault();
+    console.log('2nd input clicked')
+  }
+  handleClickDepart = (e) => {
+    e.preventDefault();
+    console.log('3rd input clicked')
+  }
+  handleClickReturn = (e) => {
+    e.preventDefault();
+    console.log('4th input clicked')
+  }
 
   handleClickBtn = (name, uniqueName, isDeparture) => {
     // isDeparture = props.departure (in Suggestions Child )
@@ -119,83 +132,87 @@ class App extends Component {
 
     return (
       <div className="app">
-        <div className="cover_image">
-          <div className="app_header">
+        <div className="coverImage">
+          <div className="appHeader">
             <div className="header">
-                <img className="header_logo" src={logo} alt="TL Logo"/>
-                <div className="header_account">
+                <img className="headerLogo" src={logo} alt="TL Logo"/>
+                <div className="headerAccount">
                   <Button text="CREATE ACCOUNT" />
                   <Button text="SIGN IN" />
-                  <p className="header_text">UK RAIL</p>
-                  <p className="header_text">help</p>
+                  <p className="headerText">UK RAIL</p>
+                  <p className="headerText">help</p>
                 </div>
             </div>
           </div>
 
-          <div className="app_body">
-            <h1 className="home_title">European trains and buses at your fingertips.</h1>
-            <h2 className="home_subtitle">Travel with Trainline, the independent leader in train and bus ticket sales throughout Europe.</h2>
+          <div>
+            <h1 className="homeTitle">European trains and buses at your fingertips.</h1>
+            <h2 className="homeSubtitle">Travel with Trainline, the independent leader in train and bus ticket sales throughout Europe.</h2>
             <span className="mobileText">Trainline works even better when you use the app.</span>
             <div className="mobileBadges">
               <img src="https://assets.trainline.eu/assets/images/open-home/en/google_play-3380d3b732c0b49bde83314d15ee2c7b.svg" alt="Google Play Badge"/>
               <img src="https://assets.trainline.eu/assets/images/open-home/en/app_store-8bab50976228b57b171b916a98ddfd11.svg" alt="App Store Badge"/>
             </div>
             <span className="mobileTextLink">Or visit our mobile site.</span>
-          <div className="search_content">
+          <div className="searchContent">
 
 
-            <div className="search_form_left">
-              <div className="form_title">Where can we take you?</div>
+            <div className="searchFormLeft">
+              <div className="formTitle">Where can we take you?</div>
               <form>
-                <div className="search_section_container">
+                <div className="searchSectionContainer">
                     <input
-                      className="input_field input_in"
+                      className="inputField inputIn"
                       placeholder="Enter your departure station..."
                       ref={input => this.search = input}
                       onChange={this.handleInputChange}
                       onClick={(e) => this.handleClick(e)}
                     />
                     <input
-                      className="input_field input_out"
+                      className="inputField inputOut"
                       placeholder="Enter your arrival station"
                       ref={input => this.searchArr = input}
                       onChange={this.handleInputChangeDestination}
+                      onClick={(e) => this.handleClickOut(e)}
                     />
-
-
                 </div>
-                <div className="search_section_container">
+
+                <div className="searchSectionContainer">
                     <input
-                      className="input_field input_depart_in"
+                      className="inputField inputDepartIn"
                       placeholder="Depart"
+                      onClick={(e) => this.handleClickDepart(e)}
                     />
                     <input
-                      className="input_field input_depart_out"
+                      className="inputField inputDepartOut"
                       placeholder="Return"
+                      onClick={(e) => this.handleClickReturn(e)}
+
                     />
                 </div>
-                <div className="search_section_container">
+                <div className="searchSectionContainer">
                   <input
-                    className="input_field_travellers input_travellers_icon"
+                    className="inputFieldTravellers inputTravellersIcon"
                     placeholder="1 Adult (26-59)"
                   />
                 </div>
-                <div className="search_btn_content">
+                <div className="searchBtnContent">
                   <a href="" className="lien"><p>Use a discount code</p></a>
-                  <button className="btn_search">Search</button>
+                  <button className="btnSearch">Search</button>
                 </div>
              </form>
             </div>
-            <div className="search_form_right">
+            <div className="searchFormRight">
+              <div className="triangle"></div>
               <div>
                 <div>
-                  <div className="form_title">
+                  <div className="formTitle">
                     {
                       titleChanged ? 'Select a Popular Destination' : 'Select a departure station'
                     }
                   </div>
                   { query ?
-                    <ul className="search_list">
+                    <ul className="searchList">
                       <Suggestions
                         departure={true}
                         results={results}
@@ -204,13 +221,13 @@ class App extends Component {
                     </ul>
                     : <div>
                         {enabledList &&
-                          <ul className="search_list">
+                          <ul className="searchList">
                           {cities.map(city => {
                             const { local_name } = city;
                             return (
-                                <li className="search_list_item" key={local_name}>
+                                <li className="searchListItem" key={local_name}>
                                   <img
-                                    className="search_item_icone"
+                                    className="searchItemIcone"
                                     src="https://assets.trainline.eu/assets/images/location-5632039ea0e607c803bc503fba864f35.svg"
                                     alt="logo"/>
                                   {local_name}
@@ -228,7 +245,7 @@ class App extends Component {
                     results={resultsArrival}
                     handleClickBtn={this.handleClickBtn} />
                 </div>
-                <button className="search_list_btn search_item_icon">VIA</button>
+                <button className="searchListBtn searchItemIcon">VIA</button>
               </div>
             </div>
           </div>

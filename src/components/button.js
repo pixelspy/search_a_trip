@@ -4,7 +4,7 @@ class Button extends Component {
   render() {
     let { text } = this.props;
     return(
-        <button className="btn_header header_text">{text}</button>
+        <button className="btnHeader headerText">{text}</button>
     );
   }
 }
