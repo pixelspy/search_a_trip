@@ -2,21 +2,29 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Suggestions from './components/Suggestions';
 import Button from './components/button';
+import Triangle from './components/triangleAnim';
 
 import logo from './img/TL_Logo_White.png';
 
-// TRIANGLE ANIM
 class App extends Component {
-  state = {
-    cities: [],
-    query: '',                        // query Search for the Departure
-    results: [],                      // results for the Departure query
-    queryArrival: '',                 // query Search for the Arrival
-    resultsArrival: [],               // results for the Top 5 Arrival query
-    enabledList: false,               // for list of Popular Destination
-    uniqueName: '',                   // for Get Query Arrival Suggestions
-    titleChanged: false               // for Title on Right Panel List
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      cities: [],
+      query: '',                        // query Search for the Departure
+      results: [],                      // results for the Departure query
+      queryArrival: '',                 // query Search for the Arrival
+      resultsArrival: [],               // results for the Top 5 Arrival query
+      enabledList: false,               // for list of Popular Destination
+      uniqueName: '',                   // for Get Query Arrival Suggestions
+      titleChanged: false,               // for Title on Right Panel List
+      enableClick: false,
+      enableClick2: false,
+      enableClick3: false,
+      enableClick4: false
+    };
+  }
+
 
 
   getPopularCities() {
@@ -56,25 +64,32 @@ class App extends Component {
     // console.log(`http://www-uat.tictactrip.eu/api/cities/popular/from/${this.state.queryArrival}/5`)
   };
 
+// this.handleClick = this.handleClick.bind(this);
 
   // List of popular cities On Click
   handleClick = (e, local_name) => {
     e.preventDefault();
-    this.setState({enabledList: true});
-    console.log('1st input clicked')
+    this.setState({
+      enabledList: true,
+      enableClick: true
+    });
     this.getPopularCities();
     };
 
   handleClickOut = (e) => {
     e.preventDefault();
-    console.log('2nd input clicked')
+    this.setState(prevState => ({
+      enableClick2: !prevState.enableClick2}));
+    // console.log('2nd input clicked')
   }
   handleClickDepart = (e) => {
     e.preventDefault();
+    this.setState({enableClick3: true});
     console.log('3rd input clicked')
   }
   handleClickReturn = (e) => {
     e.preventDefault();
+    this.setState({enableClick4: true});
     console.log('4th input clicked')
   }
 
@@ -126,9 +141,21 @@ class App extends Component {
       })
     };
 
+
   render() {
 
-    const { cities, titleChanged, query, results, resultsArrival, enabledList } = this.state;
+    const {
+      cities,
+      titleChanged,
+      query,
+      results,
+      resultsArrival,
+      enabledList,
+      enableClick,
+      enableClick2,
+      enableClick3,
+      enableClick4,
+    } = this.state;
 
     return (
       <div className="app">
@@ -203,7 +230,18 @@ class App extends Component {
              </form>
             </div>
             <div className="searchFormRight">
-              <div className="triangle"></div>
+              { enableClick ? <Triangle /> : (enableClick2 ? <Triangle top= "355px"/> : ' ' )}
+              {/* { enableClick ? <Triangle /> : ' '}
+              { enableClick2 ? <Triangle top= "355px"/> : ' '}
+              { enableClick3 ? <Triangle top= "425px"/> : ' '}
+              { enableClick4 ? <Triangle top= "470px"/> : ' '} */}
+
+              {/* { enableClick2 ? <Triangle top= "355px"/> : ' '}
+              { enableClick3 ? <Triangle top= "425px"/> : ' '}
+              { enableClick4 ? <Triangle top= "470px"/> : ' '} */}
+
+
+
               <div>
                 <div>
                   <div className="formTitle">
