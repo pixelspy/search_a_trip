@@ -5,7 +5,7 @@ const Suggestions = (props, handleClickBtn) => {
     <li
       className="searchListItem"
       key={r.id}
-      onClick={() => props.handleClickBtn(r.local_name, r.unique_name, props.departure)}
+      onClick={() => props.handleClickBtn(r.local_name, r.unique_name, props.departure, props.topDeparture)}
       >
       <img
         className="searchItemIcone"

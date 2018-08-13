@@ -93,11 +93,11 @@ class App extends Component {
     console.log('4th input clicked')
   }
 
-  handleClickBtn = (name, uniqueName, isDeparture) => {
+  handleClickBtn = (name, uniqueName, isDeparture, isTopDeparture) => {
     // isDeparture = props.departure (in Suggestions Child )
 
     // 1° Location in the list has been clicked
-      if(isDeparture === true ) {
+      if(isDeparture  === true || isTopDeparture === true ) {
     // 2° Change input form to the value of the Location from the list
         this.search.value = name;  // ref of input
         this.setState({
@@ -108,7 +108,7 @@ class App extends Component {
     // 4° Change the focus of the input to the Arrival input
         this.searchArr.focus();
     // 5° Make the Departure List disappear
-        this.setState({results: []});
+        this.setState({ results: [], cities: [] });
     // 6° Change the title of the List
         this.setState({titleChanged: true})
       } else {
@@ -116,6 +116,17 @@ class App extends Component {
         this.searchArr.value = name;
       }
   };
+  //
+  // handleClikTopDeparture = (name, isTopDeparture) => {
+  //   if(isTopDeparture === true ) {
+  //     this.search.value = name;
+  //     this.searchArr.focus();
+  //     this.setState({cities: []});
+  //     this.setState({titleChanged: true})
+  //   } else {
+  //     this.searchArr.value = name;
+  //   }
+  // }
 
   handleInputChange = () => {
       this.setState({
@@ -230,7 +241,14 @@ class App extends Component {
              </form>
             </div>
             <div className="searchFormRight">
-              { enableClick ? <Triangle /> : (enableClick2 ? <Triangle top= "355px"/> : ' ' )}
+              {/* {(() => {
+                switch(this.state.enableClick) {
+                  case enableClick: return <Triangle />;
+                  case enableClick2: return <Triangle top= "355px"/>;
+                  case enableClick3: return <Triangle top= "425px"/>
+                }
+              })} */}
+              {/* { enableClick ? <Triangle /> : (enableClick2 ? <Triangle top= "355px"/> : ' ' )} */}
               {/* { enableClick ? <Triangle /> : ' '}
               { enableClick2 ? <Triangle top= "355px"/> : ' '}
               { enableClick3 ? <Triangle top= "425px"/> : ' '}
@@ -253,26 +271,18 @@ class App extends Component {
                     <ul className="searchList">
                       <Suggestions
                         departure={true}
+                        topDeparture={false}
                         results={results}
                         handleClickBtn={this.handleClickBtn}
                       />
                     </ul>
                     : <div>
                         {enabledList &&
-                          <ul className="searchList">
-                          {cities.map(city => {
-                            const { local_name } = city;
-                            return (
-                                <li className="searchListItem" key={local_name}>
-                                  <img
-                                    className="searchItemIcone"
-                                    src="https://assets.trainline.eu/assets/images/location-5632039ea0e607c803bc503fba864f35.svg"
-                                    alt="logo"/>
-                                  {local_name}
-                                </li>
-                              );
-                            })}
-                          </ul>
+                          <Suggestions
+                            topDeparture={true}
+                            results={cities}
+                            handleClickBtn={this.handleClickBtn}
+                          />
                         }
                       </div>
                     }
@@ -280,6 +290,7 @@ class App extends Component {
                 <div>
                   <Suggestions
                     departure={false}
+                    topDeparture={false}
                     results={resultsArrival}
                     handleClickBtn={this.handleClickBtn} />
                 </div>
