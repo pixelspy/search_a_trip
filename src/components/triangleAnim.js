@@ -32,7 +32,7 @@ class Triangle extends Component {
       <div
         style={{...triangle,
         // display: display ? 'block' : 'none',
-        top: top ? top : '305px',
+        top: top ? top : '290px'
       }}>
       </div>
     );

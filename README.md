@@ -1,6 +1,9 @@
 # Project Test
 ## Front copying from [TrainLine](https://www.trainline.eu/)
 ## Back Api from  Tictactrip
+* http://www-uat.tictactrip.eu/api/cities/autocomplete/?q=P
+* http://www-uat.tictactrip.eu/api/cities/popular/5
+* http://www-uat.tictactrip.eu/api/cities/popular/from/puteaux/5
 
 ### Technical Stack
 * Axios
@@ -11,7 +14,9 @@
 * git clone
 * npm install
 
-### API utilisées
-* http://www-uat.tictactrip.eu/api/cities/autocomplete/?q=P
-* http://www-uat.tictactrip.eu/api/cities/popular/5
-* http://www-uat.tictactrip.eu/api/cities/popular/from/puteaux/5
+# À améliorer :
+* Refactoring des composants enfants / parents (reactJS)
+* Merger Fonctions choosePlace() et handleClickBtn()
+* Découper App.scss en différentes feuilles de style par composant
+* Implémenter Redux
+* Query de l'API avec le params ?q= cf : getQueryDest() à appliquer à la recherche de stations d'arrivée
